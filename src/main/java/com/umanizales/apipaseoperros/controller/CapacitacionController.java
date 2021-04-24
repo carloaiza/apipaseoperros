@@ -2,6 +2,8 @@ package com.umanizales.apipaseoperros.controller;
 
 
 import com.umanizales.apipaseoperros.model.Empleado;
+import com.umanizales.apipaseoperros.service.ListaSEService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,14 @@ import java.util.List;
 @RequestMapping(path = "/capacitacion")
 @Validated
 public class CapacitacionController {
+
+    private ListaSEService listaSEService;
+
+    @Autowired
+    public CapacitacionController(ListaSEService listaSEService) {
+        this.listaSEService = listaSEService;
+    }
+
     @GetMapping
     public Empleado getEmployee()
     {
@@ -37,5 +47,17 @@ public class CapacitacionController {
         //Guarda en bds
         employee.setSalario(employee.getSalario()*1.15);
         return employee;
+    }
+
+    @GetMapping(path="/count")
+    public int getCountEmployees()
+    {
+        return listaSEService.contarNodos();
+    }
+
+    @GetMapping(path="/listar")
+    public String getTotalEmployees()
+    {
+        return listaSEService.listarNodos();
     }
 }

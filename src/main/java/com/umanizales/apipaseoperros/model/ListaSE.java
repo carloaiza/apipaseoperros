@@ -31,11 +31,12 @@ public class ListaSE implements Serializable{
     }
    
     
-    public void adicionarNodo(Object dato) throws ListaSEExcepcion
+    public void adicionarNodo(Object dato)
     {
         if(cabeza==null)
         {
             cabeza = new Nodo(dato);
+            cont++;
         }
         else
         {
@@ -57,10 +58,13 @@ public class ListaSE implements Serializable{
         while(temp!=null)
         {
             listado = listado + temp.getDato();
+            temp = temp.getSiguiente();
         }
         
         return listado;
     }
-    
 
+    public int getCont() {
+        return cont;
+    }
 }
