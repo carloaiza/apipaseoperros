@@ -1,7 +1,12 @@
 package com.umanizales.apipaseoperros.model.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
+
+
 import java.util.List;
 
 @Entity
@@ -9,7 +14,6 @@ import java.util.List;
 public class TipoUsuario {
     private short codigo;
     private String descripcion;
-    //private List<Usuario> usuarios;
 
     @Id
     @Column(name = "codigo", nullable = false)
@@ -50,15 +54,6 @@ public class TipoUsuario {
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         return result;
     }
-/*
-    @OneToMany(mappedBy = "tipoUsuario",fetch = FetchType.EAGER)
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
 
- */
 }

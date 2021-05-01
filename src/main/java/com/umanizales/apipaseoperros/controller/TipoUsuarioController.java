@@ -21,6 +21,7 @@ public class TipoUsuarioController {
     @GetMapping
     public Iterable<TipoUsuario> getAllTipoUsuarios()
     {
+
         return tipoUsuarioService.getAllTipoUsuarios();
     }
 

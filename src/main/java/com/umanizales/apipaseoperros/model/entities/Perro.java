@@ -8,7 +8,6 @@ public class Perro {
     private String codigo;
     private String nombre;
     private short edad;
-    private List<PaseoPerro> paseos;
 
     @Id
     @Column(name = "codigo", nullable = false, length = 10)
@@ -62,12 +61,12 @@ public class Perro {
         return result;
     }
 
-    @OneToMany(mappedBy = "perro")
-    public List<PaseoPerro> getPaseos() {
-        return paseos;
-    }
-
-    public void setPaseos(List<PaseoPerro> paseos) {
-        this.paseos = paseos;
+    @Override
+    public String toString() {
+        return "Perro{" +
+                "codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                '}';
     }
 }

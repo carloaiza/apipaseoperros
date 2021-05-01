@@ -1,36 +1,40 @@
 package com.umanizales.apipaseoperros.controller;
 
 
+import com.umanizales.apipaseoperros.model.entities.Perro;
+import com.umanizales.apipaseoperros.service.ListaSEService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/paseoperros")
 @Validated
 public class PaseoPerrosController {
+    private ListaSEService listaSEService;
+
+    public PaseoPerrosController(ListaSEService listaSEService) {
+        this.listaSEService = listaSEService;
+    }
 
     @GetMapping
-    public String getMessage(){
-        return "Hola Campeones";
+    public String initPerrosListaSE()
+    {
+        listaSEService.load();
+        return listaSEService.listarNodos();
     }
 
-    @GetMapping(path = "/message2")
-    public String getMessage2(){
-        return "Segundo Mensaje";
+    @GetMapping(path="/listar")
+    public String getAllPerros()
+    {
+        return listaSEService.listarNodos();
     }
 
-    @GetMapping(path = "/message/{saludo}")
-    public String getMessage3(@PathVariable("saludo") String saludo){
-        return "Hola "+saludo;
-    }
 
-    @GetMapping(path = "/message/{saludo}/{saludo2}")
-    public String getMessage4(@PathVariable("saludo") String saludo,
-                              @PathVariable("saludo2") String saludo2){
-        return saludo + saludo2;
-    }
+
 
 }

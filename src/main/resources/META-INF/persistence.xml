@@ -8,6 +8,7 @@
     <class>com.umanizales.apipaseoperros.model.entities.Usuario</class>
     <class>com.umanizales.apipaseoperros.model.entities.Perro</class>
     <class>com.umanizales.apipaseoperros.model.entities.PaseoPerro</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
   </persistence-unit>
 </persistence>

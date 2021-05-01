@@ -8,7 +8,6 @@ public class Usuario {
     private int id;
     private String correo;
     private String contrasenia;
-    private List<PaseoPerro> paseos;
     private TipoUsuario tipoUsuario;
 
     @Id
@@ -62,15 +61,6 @@ public class Usuario {
         result = 31 * result + (correo != null ? correo.hashCode() : 0);
         result = 31 * result + (contrasenia != null ? contrasenia.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "paseador")
-    public List<PaseoPerro> getPaseos() {
-        return paseos;
-    }
-
-    public void setPaseos(List<PaseoPerro> paseos) {
-        this.paseos = paseos;
     }
 
     @ManyToOne
