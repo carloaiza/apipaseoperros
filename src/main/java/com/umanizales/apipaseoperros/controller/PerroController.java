@@ -1,9 +1,13 @@
 package com.umanizales.apipaseoperros.controller;
 
 
+import com.umanizales.apipaseoperros.model.dto.RespuestaDTO;
 import com.umanizales.apipaseoperros.model.entities.Perro;
 import com.umanizales.apipaseoperros.service.PerroService;
+import com.umanizales.apipaseoperros.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,32 +24,36 @@ public class PerroController {
     }
 
     @GetMapping
-    public Iterable<Perro> getAllPerros()
+    public @ResponseBody ResponseEntity<Object> getAllPerros()
     {
         return perroService.getAllPerros();
     }
 
     @GetMapping(path="/{code}")
-    public Perro getPerroById(@PathVariable("code") String code)
-    {
+    public @ResponseBody ResponseEntity<Object> getPerroById(@PathVariable("code") String code)    {
+
         return perroService.getPerroByCode(code);
     }
 
     @PostMapping
-    public boolean savePerro(@RequestBody Perro perro)
+    public @ResponseBody ResponseEntity<Object>
+    savePerro(@RequestBody Perro perro)
     {
         return perroService.savePerro(perro);
     }
 
     @PutMapping
-    public Perro updatePerro(@RequestBody Perro perro)
+    public @ResponseBody ResponseEntity<Object> updatePerro(@RequestBody Perro perro)
     {
         return perroService.updatePerro(perro);
     }
 
     @DeleteMapping(path="/{code}")
-    public boolean deletePerro(@PathVariable("code") String code)
+    public @ResponseBody ResponseEntity<Object> deletePerro(@PathVariable("code") String code)
     {
         return perroService.deletePerroById(code);
     }
+
+
+
 }

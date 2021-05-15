@@ -34,6 +34,12 @@ public class PaseoPerrosController {
         return listaSEService.listarNodos();
     }
 
+    @GetMapping(path="/{codigo}")
+    public Perro encontrarPerroxCodigo(@PathVariable("codigo") String codigo)
+    {
+        return listaSEService.encontrarPerroxCodigo(codigo);
+    }
+
 
 
 

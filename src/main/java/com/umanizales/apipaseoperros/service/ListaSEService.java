@@ -32,7 +32,6 @@ public class ListaSEService {
         {
             this.listaSE.adicionarNodo(perrito);
         }
-        System.out.println("listaSE.getCont() = " + listaSE.getCont());
 
     }
 
@@ -46,7 +45,6 @@ public class ListaSEService {
         return listaSE.listadoNodos();
     }
 
-
     public boolean adicionarNodo(Object dato)
     {
         this.listaSE.adicionarNodo(dato);
@@ -54,6 +52,11 @@ public class ListaSEService {
             this.perroRepository.save((Perro)dato);
         }
         return true;
+    }
+
+    public Perro encontrarPerroxCodigo(String codigo)
+    {
+        return (Perro) this.listaSE.encontrarDatoxCodigo(codigo);
     }
 
 }

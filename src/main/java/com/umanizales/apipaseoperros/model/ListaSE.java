@@ -83,4 +83,21 @@ public class ListaSE implements Serializable{
     public int getCont() {
         return cont;
     }
+
+    public Object encontrarDatoxCodigo(String codigo)
+    {
+        if(cabeza !=null)
+        {
+            Nodo temp=cabeza;
+            while(temp !=null)
+            {
+                if(temp.getDato().equals(codigo))
+                {
+                    return temp.getDato();
+                }
+                temp = temp.getSiguiente();
+            }
+        }
+        return null;
+    }
 }
